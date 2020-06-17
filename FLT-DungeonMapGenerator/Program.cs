@@ -85,20 +85,20 @@ namespace FLT_DungeonMapGenerator
 
             MapMeta meta = new MapMeta
             {
-                MapSizeX = 96,
-                MapSizeY = 64,
-                StartRoomSize = 8,
-                MaxRoomSize = 12,
-                MinRoomSize = 6,
+                MapSizeX = 64,
+                MapSizeY = 48,
+                StartRoomSize = 6,
+                MaxRoomSize = 8,
+                MinRoomSize = 4,
                 MaxRoomNumber = 10,
                 MaxRoomConnection = 2,
-                MinRoomDistance = 500,
+                MinRoomDistance = 200,
                 MaxCorridorBranchCount = 100,
                 MinCorridorStraight = 3,
                 MaxCorridorStraight = 12,
                 RouteTwistFactor = 3,
                 RouteDirectFactor = 6,
-                RouteBranchFactor = 12,
+                RouteBranchFactor = 18,
                 RouteAdditionalBranchFactor = 12,
             };
 
@@ -586,7 +586,7 @@ namespace FLT_DungeonMapGenerator
                 }
 
                 // try roll
-                if (RandomNumber.Between(0, (int)(ChancePool / Convert.ToDouble(dataRaw[0]))) == 0)
+                if (RandomNumber.Between(2, (int)(ChancePool / Convert.ToDouble(dataRaw[0]))) == 2)
                 {
                     Console.WriteLine("Inserting component : " + filePath + ", size=" + width + "x" + height);
 
@@ -597,7 +597,7 @@ namespace FLT_DungeonMapGenerator
 
                         for (int j = 0; j < width; j++)
                         {
-                            map[y + j][x + i] = (char)(line[j] - '0');
+                            map[x + j][y + i] = (char)(line[j] - '0');
                         }
                     }
                 }
